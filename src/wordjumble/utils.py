@@ -22,6 +22,11 @@ def unjumble(word, jumbled):
             1. word - the original string the player has to correctly guess.
             2. jumbled - a string containing randomly organized characters from the original string
                 that the player will use to reorganize to match the original string.
+        outputs:
+            this function is the skeleton for the player to solve the character puzzle and also how the user
+            interacts with the game using the keyboard. it tracks valid inputs, and handles invalid ones, it 
+            also tracks whether the player has already won the game and terminates the round if they won, and 
+            replays the round if they lost. it is the fundamental engine of solving the puzzle.. 
     """
     
     try:
@@ -87,7 +92,7 @@ def unjumble(word, jumbled):
                 
     except(KeyboardInterrupt): # handling keyboard interruptions from player.
         clearTerminal()
-        sys.exit("\nGame interrupted by user.")
+        sys.exit("\nGAME INTERRUPTED BY PLAYER.")
 
 
 def showProgress(player_sorted, jumbled_list):
@@ -96,6 +101,10 @@ def showProgress(player_sorted, jumbled_list):
                 1. player_sorted, a list of the characters the player has sorted manually.
                 2. jumbled_list, a list of randomly sorted characters from the original secret
                     word that are available to be picked for sorting.
+        output:
+                an ASCII display of the progress made so far by the player. it will display
+                both the user inputted letters and the unpicked ones while they are still available.
+                once they are complete, it will only show the final reorganize characters from the player.
     """
     # creating string variables out of lists.
     used_characters = ''.join(player_sorted) 
@@ -117,7 +126,7 @@ def showProgress(player_sorted, jumbled_list):
 def jumble(word): # COMPLETE
     """
         input: a string, which is the word that the player has to "UNJUMBLE" ;)
-        returns: a list of JUMBLED characters from the original string.
+        returns: a string of randomly organized characters from the original string.
     """
     
     letters = list(word)
