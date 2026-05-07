@@ -11,6 +11,7 @@ The game provides the user with randomly sorted letters that do not make sense a
 - Displays the the game title and the randomly sorted characters using the ASCII art through the "art" Python external library.
 - Takes user input using "readchar", another Python external library that helps to record keyboard activity from user without having to press ENTER like the standard input() function built into the Python language. 
 - Displays the progress of the player and the final result of the art using the same "art" library.
+- The player can undo recent inputs if they made a mistake in rearranging characters.
 
 #### Common Issues
 
@@ -42,6 +43,18 @@ To use install the dependencies, you must type the command `pip install -r requi
 You must `cd src/wordjumble`, then simply run the main.py file -> `python3 main.py`
 
 ## Usage Examples
+#### Welcoming Window
+<img width="1049" height="316" alt="Screenshot From 2026-05-07 12-18-19" src="https://github.com/user-attachments/assets/e9f2bd4b-b82a-449b-af75-8efc00783ac0" />
+
+#### Playing Example for the word "DIMENSIONS"
+
+<img width="1120" height="387" alt="Screencast From 2026-05-07 12-19-20" src="https://github.com/user-attachments/assets/d109a0f3-3e43-4165-8394-4d499b015725" />
+
+#### Undoing Recent Inputs
+
+<img width="853" height="371" alt="Screencast From 2026-05-07 12-35-27" src="https://github.com/user-attachments/assets/6dfde52c-07f5-41f6-bff9-75dc8eaa9bfa" />
+
+
 
 
 
