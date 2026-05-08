@@ -4,7 +4,17 @@ import sys
 import time
 import random
 from art import *
-from readchar import readkey, key 
+from readchar import readkey, key
+
+def getWords(file):
+
+    with open(file, 'r') as f:
+
+        text = f.read()
+        text = text.replace('\n', "")
+        words = text.split(',')
+        return words
+
 
 def clearTerminal():
     """
@@ -16,7 +26,7 @@ def clearTerminal():
     else:
         os.system("clear")
 
-def unjumble(word, jumbled): 
+def play(word): 
     """
         inputs: 
             1. word - the original string the player has to correctly guess.
@@ -30,11 +40,15 @@ def unjumble(word, jumbled):
     """
     
     try:
-        jumbled_list = list(jumbled) # to keep track of player progress after each valid input.
+        
+        
         player_sorted = [] # list of characters sorte by player input.
         index_stack = [] # a form of a "stack" for tracking the index of each character in case the player backspaces.
 
         while True: # while the user has not solved the puzzle of the characters...
+
+            jumbled = jumble(word)
+            jumbled_list = list(jumbled)
 
             while len(player_sorted) < len(word): # while they have not typed all of the valid characters.
                 
@@ -42,6 +56,7 @@ def unjumble(word, jumbled):
                 showProgress(player_sorted, jumbled_list) # show progress to the player.
 
                 player_input = readkey() # taking user input from keyboard.
+                
                 
                 if (player_input.isalpha() and player_input[0] in jumbled_list): # if the user typed valid and available chars from jumbled_list
 
@@ -79,9 +94,11 @@ def unjumble(word, jumbled):
                 clearTerminal()
                 showProgress(player_sorted, jumbled_list)
                 print("CONGRATULATIONS, YOU CRACKED IT!")
+                print("LET'S GO TO THE NEXT WORD")
                 time.sleep(3)
                 clearTerminal()
-                return 1
+                break
+                
             else:
                 clearTerminal() # player loses rond / input did not match original string.
                 showProgress(player_sorted, jumbled_list)

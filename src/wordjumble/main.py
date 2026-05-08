@@ -1,7 +1,7 @@
 from utils import * # importing functionss from the helpers file
 import os
 
-def main(word):
+def main(file):
     
     clearTerminal()
 
@@ -12,29 +12,22 @@ def main(word):
           "To UNJUMBLE a word is to reorder the given characters to match the sequence of characters of the hidden word.\n"
           "Example, for the word DOG, jumbled -> \033[36m[D G O]\033[0m. You would have to reorder these characters correctly into \033[36mD O G\033[0m to win the round.\n")
     
-    print("\nPress SPACE or ENTER to start, press 'Q' to quit.")
+    print("\nPress SPACE or ENTER to start, press 'Q' to quit the game.")
 
     try:
-        while True:   # the while loop to drive the game. breaks on Q or KeyboardInterrupt
-            k = readkey()
+        k = readkey()
+        if (k == key.SPACE or k == key.ENTER):
+            clearTerminal()
+        elif (k == 'q'):
+            clearTerminal()
+            sys.exit(0)
 
-            if (k == key.SPACE or k == key.ENTER):
-                clearTerminal()
+        level_words = getWords(file)
+        # testing game by interating through the words... this is not the final logic of the program.
+        for word in level_words:
 
-                jumbled = jumble(word)
-                outcome = unjumble(word, jumbled)
-
-                if outcome == 1:
-                    # if they win the round.
-                    print("this is the part where you use another word since the player won. for now, i'll exit the game at this point")
-                    break
-            
-            elif (k == 'q'):
-                clearTerminal()
-                sys.exit(0)
-
-            else:
-                continue
+            word = word.lower()
+            play(word)
 
     except(KeyboardInterrupt):
         clearTerminal()
@@ -42,4 +35,5 @@ def main(word):
 
 if __name__ == "__main__":
 
-    main("dimensions")
+    file = "../../assets/words/easy_words.txt"
+    main(file)
