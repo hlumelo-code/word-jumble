@@ -40,7 +40,11 @@ def main(file):
 
     except(KeyboardInterrupt):
         clearTerminal()
-        sys.exit("Game interrupted by user. Exiting")
+        sys.exit("GAME INTERRUPTED BY USER")
+
+    except(FileNotFoundError):
+        clearTerminal()
+        sys.exit("ASSETS FOR RUNNING PROGRAM NOT FOUND")
 
 if __name__ == "__main__":
 
