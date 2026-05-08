@@ -49,12 +49,13 @@ def play(word):
 
             jumbled = jumble(word)
             jumbled_list = list(jumbled)
+            
 
             while len(player_sorted) < len(word): # while they have not typed all of the valid characters.
                 
                 clearTerminal() 
                 showProgress(player_sorted, jumbled_list) # show progress to the player.
-
+                
                 player_input = readkey() # taking user input from keyboard.
                 
                 
