@@ -5,6 +5,7 @@ import time
 import random
 from art import *
 from readchar import readkey, key
+from sounds import *
 
 def getWords(file):
 
@@ -58,6 +59,9 @@ def play(word):
                 
                 player_input = readkey() # taking user input from keyboard.
                 
+                if (player_input != key.BACKSPACE):
+                    keyPressSound()
+                
                 
                 if (player_input.isalpha() and player_input[0] in jumbled_list): # if the user typed valid and available chars from jumbled_list
 
@@ -77,23 +81,26 @@ def play(word):
 
                 elif (player_input == key.BACKSPACE): # if player pressed backspce
 
-                    if (len(index_stack) != 0): # if the index stack is not empty, then 
+                    try: 
                         last_value = player_sorted.pop() # get the index of that recent character from the original jumbled string
                         jumbled_list.insert(index_stack.pop(), last_value) # and insert it back to the right index in jumbled string.
+                        backspaceSound()
                         
-                    else:
+                    except(IndexError):
                         continue
 
                 elif (player_input == key.CTRL_X) or (player_input == key.CTRL_C) or (player_input == key.CTRL_Z): # player quits
                     raise KeyboardInterrupt
 
                 else:
+                    invalidSound()
                     print("INVALID INPUT. PLEASE TRY AGAIN.") # invalid input.
                     time.sleep(3)
 
             if (''.join(player_sorted) == word): # player wins the round.
                 clearTerminal()
                 showProgress(player_sorted, jumbled_list)
+                winSound()
                 print("CONGRATULATIONS, YOU CRACKED IT!")
                 print("LET'S GO TO THE NEXT WORD")
                 time.sleep(3)
@@ -103,7 +110,8 @@ def play(word):
             else:
                 clearTerminal() # player loses rond / input did not match original string.
                 showProgress(player_sorted, jumbled_list)
-                print("THIS ORDER IS INCORRECT, LET'S START OVER.")
+                loseSound()
+                print("THIS ORDER IS INCORRECT, TRY AGAIN.")
                 time.sleep(3)
                 player_sorted = []
                 jumbled_list = list(jumbled)
