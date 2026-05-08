@@ -1,5 +1,6 @@
 from utils import * # importing functionss from the helpers file
 import os
+from sounds import *
 
 def main(file):
    
@@ -7,7 +8,9 @@ def main(file):
         clearTerminal()
 
         tprint("WORD JUMBLE")
+        openSound()
         time.sleep(0.3)
+
         # introduction / welcoming the player.
         print("                                           \033[35m" + "WELCOME" + "\033[0m")
         print("In this game, you are given a JUMBLED word - you have to \033[34mUNJUMBLE\033[0m it to move to the next round, and eventually levels.\n"
@@ -20,6 +23,7 @@ def main(file):
 
             k = readkey()
             if (k == key.SPACE or k == key.ENTER): # chooses to play
+                # play sound for choosing to play.
                 
                 level_words = getWords(file)
 
