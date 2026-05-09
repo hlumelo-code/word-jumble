@@ -8,6 +8,13 @@ from readchar import readkey, key
 from sounds import *
 
 def getWords(file):
+    """
+        this function if so opening a text file, reading it using read(), removing special/excess characters e.g '\n'
+        and converting the string into a list using split(), and returns the list.
+
+        input: string name of the text file to use.
+        returns: a list of the words/strings from the text file.
+    """
 
     with open(file, 'r') as f:
 
@@ -20,6 +27,9 @@ def getWords(file):
 def clearTerminal():
     """
         this function clears the terminal window. it checks the OS and removes all outputted text from terminal.
+
+        input: none
+        output: removes text from terminal window.
     """
 
     if (os.name == "nt"):
@@ -41,8 +51,7 @@ def play(word):
     """
     
     try:
-        
-        
+            
         player_sorted = [] # list of characters sorte by player input.
         index_stack = [] # a form of a "stack" for tracking the index of each character in case the player backspaces.
 

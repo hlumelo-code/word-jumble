@@ -1,6 +1,18 @@
 import nava
 from nava import NavaBaseError
 
+"""
+    all functions in this module are identical in their purpose, as they fetch sound files from 
+    the /assets/sounds directory. they only differ in the sound each function plays.
+
+    input: none
+    output: plays sound using the nava sound library. 
+
+                1. async_mode=True allows sound to be played while the program continues to run 
+                    without pausing until sound is done playing.
+                2. NavaBaseError is the nava exception for catching errors with playing audio files.
+"""
+
 def openSound(): # sound for starting the game
 
     try:

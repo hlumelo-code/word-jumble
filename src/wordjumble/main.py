@@ -3,6 +3,18 @@ import os
 from sounds import *
 
 def main(file):
+    """
+        this is the main funtion of the game. it is the first function the player will interact with when they play the game.
+
+        input: a string name of the file from the assets directory that contains the words that will be used in the game.
+        outputs: currently does not return anything but calls the play() function from the utils module that is interactive
+                    with the user. 
+
+                    1. i plan to make it return outputs/progress for saving the state of the game soon.
+                    2. i want to save the state in a easy-accessable file, like a JSON file.
+                    3. i want the game to select words randomly from each level of difficulty.
+                    4. i want the game to also be able to be able to switch levels of difficulty after each level is complete.
+    """
    
     try:
         clearTerminal()
