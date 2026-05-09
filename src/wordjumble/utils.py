@@ -75,6 +75,7 @@ def play(word):
                     continue
 
                 elif (player_input.isalpha() and player_input[0] not in word):
+                    invalidSound()
                     print(f"THE LETTER {player_input.upper()} IS NOT IN THE ORIGINAL WORD.")
                     time.sleep(3)
                     continue
