@@ -1,5 +1,7 @@
 # WORD JUMBLE
+
 <img width="237" height="237" alt="rmbg (Edited)" src="https://github.com/user-attachments/assets/0f9cd3d7-6385-4446-9e14-c63860477151" />
+
 ## A CLI word-puzzle game inspired by Scrabble built to be *pythonic* and interactive.
 
 The game provides the user with randomly sorted letters that do not make sense at first sight, but the player is tasked to rearrange them to form a word in order to complete each task. The game displays the set of characters to play with, and the user types them one-by-one to form the secret word hidden from the player.
