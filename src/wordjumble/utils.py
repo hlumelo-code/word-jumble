@@ -152,7 +152,7 @@ def showProgress(player_sorted, jumbled_list, message = ""):
     if (len(jumbled_list)!=0): # if player has not used all available letters/ if they are not done yet
         print("PROGRESS SO FAR")
         tprint(f"{used_characters}")
-        print("\033[35mUNUSED LETTERS, PRESS BACKSPACE TO UNDO\033[0m]")
+        print("\033[35mUNUSED LETTERS, PRESS BACKSPACE TO UNDO\033[0m")
         tprint(unused_characters)
 
     else: # when they are done
