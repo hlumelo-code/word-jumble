@@ -59,12 +59,13 @@ def play(word):
 
             jumbled = jumble(word)
             jumbled_list = list(jumbled)
+            message = ""
             
 
             while len(player_sorted) < len(word): # while they have not typed all of the valid characters.
                 
                 clearTerminal() 
-                showProgress(player_sorted, jumbled_list) # show progress to the player.
+                showProgress(player_sorted, jumbled_list, message) # show progress to the player.
                 
                 player_input = readkey() # taking user input from keyboard.
                 
@@ -77,16 +78,15 @@ def play(word):
                     index_stack.append(jumbled_list.index(player_input[0])) # append the index of the character that matches playr input to "stack".
                     player_sorted.append(player_input[0]) # add that character to the player sorted list.
                     jumbled_list.remove(player_input[0]) # remove it from the available set of valid randomized characters.
+                    message = ""
 
                 elif (player_input.isalpha() and player_input[0] not in jumbled_list and player_input[0] in word): # letter exhausted
-                    print(f"YOU HAVE ALREADY EXHAUSTED THE LETTER {player_input.upper()}")
-                    time.sleep(3)
+                    message = f"YOU HAVE EXHAUSTED THE LETTER {player_input.upper()}"
                     continue
 
                 elif (player_input.isalpha() and player_input[0] not in word):
                     invalidSound()
-                    print(f"THE LETTER {player_input.upper()} IS NOT IN THE ORIGINAL WORD.")
-                    time.sleep(3)
+                    message = f"THE LETTER {player_input.upper()} IS NOT IN THE ORIGINAL WORD."
                     continue
 
                 elif (player_input == key.BACKSPACE): # if player pressed backspce
@@ -104,34 +104,33 @@ def play(word):
 
                 else:
                     invalidSound()
-                    print("INVALID INPUT. PLEASE TRY AGAIN.") # invalid input.
-                    time.sleep(3)
-
+                    message = "INVALID INPUT. PLEASE TRY AGAIN." # invalid input.
+                    
             if (''.join(player_sorted) == word): # player wins the round.
                 clearTerminal()
-                showProgress(player_sorted, jumbled_list)
+                message = "CONGRATULATIONS, YOU CRACKED IT!\n LET'S GO TO THE NEXT WORD")
+                showProgress(player_sorted, jumbled_list, message)
                 winSound()
-                print("CONGRATULATIONS, YOU CRACKED IT!")
-                print("LET'S GO TO THE NEXT WORD")
-                time.sleep(3)
+                time.sleep(2)
                 clearTerminal()
                 break
                 
             else:
                 clearTerminal() # player loses rond / input did not match original string.
-                showProgress(player_sorted, jumbled_list)
+                message = "THIS ORDER IS INCORRECT, TRY AGAIN."
+                showProgress(player_sorted, jumbled_list, message)
                 loseSound()
-                print("THIS ORDER IS INCORRECT, TRY AGAIN.")
                 time.sleep(3)
                 player_sorted = []
                 jumbled_list = list(jumbled)
+                continue
                 
     except(KeyboardInterrupt): # handling keyboard interruptions from player.
         clearTerminal()
         sys.exit("\nGAME INTERRUPTED BY PLAYER.")
 
 
-def showProgress(player_sorted, jumbled_list):
+def showProgress(player_sorted, jumbled_list, message = ""):
     """
         inputs:
                 1. player_sorted, a list of the characters the player has sorted manually.
@@ -148,6 +147,7 @@ def showProgress(player_sorted, jumbled_list):
     # making them capital letters
     used_characters = used_characters.upper()
     unused_characters = unused_characters.upper()
+    print(message) if len(message) > 0
 
     if (len(jumbled_list)!=0): # if player has not used all available letters/ if they are not done yet
         print("PROGRESS SO FAR")
