@@ -1,4 +1,5 @@
 # WORD JUMBLE
+<img width="580" height="386" alt="rmbg" src="https://github.com/user-attachments/assets/6d433b43-d545-4812-9b32-ef620626d7aa" />
 
 ## A CLI word-puzzle game inspired by Scrabble built to be *pythonic* and interactive.
 
