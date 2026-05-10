@@ -69,7 +69,7 @@ def play(word):
                 
                 player_input = readkey() # taking user input from keyboard.
                 
-                if (player_input != key.BACKSPACE):
+                if (player_input != key.BACKSPACE and player_input in jumbled_list):
                     keyPressSound()
                 
                 
@@ -95,6 +95,7 @@ def play(word):
                         last_value = player_sorted.pop() # get the index of that recent character from the original jumbled string
                         jumbled_list.insert(index_stack.pop(), last_value) # and insert it back to the right index in jumbled string.
                         backspaceSound()
+                        message = ""
                         
                     except(IndexError):
                         continue
@@ -108,8 +109,8 @@ def play(word):
                     
             if (''.join(player_sorted) == word): # player wins the round.
                 clearTerminal()
-                message = "CONGRATULATIONS, YOU CRACKED IT!\n LET'S GO TO THE NEXT WORD")
                 showProgress(player_sorted, jumbled_list, message)
+                print("CORRECT ORDER! LET'S MOVE TO THE NEXT WORD.")
                 winSound()
                 time.sleep(2)
                 clearTerminal()
@@ -117,10 +118,10 @@ def play(word):
                 
             else:
                 clearTerminal() # player loses rond / input did not match original string.
-                message = "THIS ORDER IS INCORRECT, TRY AGAIN."
                 showProgress(player_sorted, jumbled_list, message)
+                print("\033[31mTHIS ORDER IS INCORRECT, TRY AGAIN.\033[31m")
                 loseSound()
-                time.sleep(3)
+                time.sleep(2)
                 player_sorted = []
                 jumbled_list = list(jumbled)
                 continue
@@ -147,17 +148,18 @@ def showProgress(player_sorted, jumbled_list, message = ""):
     # making them capital letters
     used_characters = used_characters.upper()
     unused_characters = unused_characters.upper()
-    print(message) if len(message) > 0
 
     if (len(jumbled_list)!=0): # if player has not used all available letters/ if they are not done yet
         print("PROGRESS SO FAR")
-        tprint(f"[ {used_characters}]")
-        print("REORDER THESE LETTERS BY TYPING IN THE CORRECT ORDER, \033[35mPRESS BACKSPACE TO UNDO\033[0m")
+        tprint(f"{used_characters}")
+        print("\033[35mUNUSED LETTERS, PRESS BACKSPACE TO UNDO\033[0m]")
         tprint(unused_characters)
 
     else: # when they are done
         tprint(used_characters)
-    
+
+    if len(message) > 0:
+        print(f"\033[31m{message}\033[0m")
     
 def jumble(word): # COMPLETE
     """
