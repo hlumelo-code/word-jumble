@@ -13,12 +13,12 @@ from pathlib import Path
                     without pausing until sound is done playing.
                 2. NavaBaseError is the nava exception for catching errors with playing audio files.
 """
-root_dir = Path(__file__).resolve().parents[2]
+root_dir = Path(__file__).parents[2].resolve() / "assets" / "sounds"
 
 def openSound(): # sound for starting the game
 
     try:
-        sound_file = str(root_dir) + "/assets/sounds/start.wav"
+        sound_file = str(root_dir) + "/start.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
@@ -27,7 +27,7 @@ def openSound(): # sound for starting the game
 def keyPressSound(): # sound for when the player presses key for input
 
     try:
-        sound_file = str(root_dir) + "/assets/sounds/key_press.wav"
+        sound_file = str(root_dir) + "/key_press.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
@@ -36,7 +36,7 @@ def keyPressSound(): # sound for when the player presses key for input
 def winSound(): # sound for when the player wins a round
 
     try:
-        sound_file = str(root_dir) + "/assets/sounds/win.wav"
+        sound_file = str(root_dir) + "/win.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
@@ -45,7 +45,7 @@ def winSound(): # sound for when the player wins a round
 def loseSound(): # sound for when the player wins a round
 
     try:
-        sound_file = str(root_dir) + "/assets/sounds/lose.wav"
+        sound_file = str(root_dir) + "/lose.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
@@ -54,7 +54,7 @@ def loseSound(): # sound for when the player wins a round
 def backspaceSound(): # sound for when the player wins a round
 
     try:
-        sound_file = str(root_dir) + "/sounds/backspace.wav"
+        sound_file = str(root_dir) + "/backspace.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
@@ -63,7 +63,7 @@ def backspaceSound(): # sound for when the player wins a round
 def invalidSound(): # sound for when the player wins a round
 
     try:
-        sound_file = str(root_dir) + "/sounds/faaah.wav"
+        sound_file = str(root_dir) + "/faaah.wav"
         nava.play(sound_file, async_mode=True)
 
     except NavaBaseError as e:
