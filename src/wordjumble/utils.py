@@ -6,23 +6,21 @@ import random
 from art import *
 from readchar import readkey, key
 from sounds import *
+from state import saveState
 
-def getWords(file):
-    """
-        this function if so opening a text file, reading it using read(), removing special/excess characters e.g '\n'
-        and converting the string into a list using split(), and returns the list.
+def wordjumble(words): # this is the engine of the game.
 
-        input: string name of the text file to use.
-        returns: a list of the words/strings from the text file.
-    """
+    for word in words:
 
-    with open(file, 'r') as f:
+        solved = False
+        solved = play(word)
 
-        text = f.read()
-        text = text.replace('\n', "")
-        words = text.split(',')
-        return words
-
+        if solved == True: # if the current word has been solved...
+            words.remove(word)
+            continue
+        else:
+            saveState(words)
+            break
 
 def clearTerminal():
     """
@@ -66,6 +64,7 @@ def play(word):
                 
                 clearTerminal() 
                 showProgress(player_sorted, jumbled_list, message) # show progress to the player.
+                print("CTRL_C OR CTRL_X TO QUIT\n\n")
                 
                 player_input = readkey() # taking user input from keyboard.
                 
@@ -114,7 +113,8 @@ def play(word):
                 winSound()
                 time.sleep(2)
                 clearTerminal()
-                break
+
+                return True     # True means they solved this round.
                 
             else:
                 clearTerminal() # player loses rond / input did not match original string.
@@ -126,9 +126,9 @@ def play(word):
                 jumbled_list = list(jumbled)
                 continue
                 
-    except(KeyboardInterrupt): # handling keyboard interruptions from player.
+    except(KeyboardInterrupt): # player quits game.
         clearTerminal()
-        sys.exit("\nGAME INTERRUPTED BY PLAYER.")
+        return False
 
 
 def showProgress(player_sorted, jumbled_list, message = ""):

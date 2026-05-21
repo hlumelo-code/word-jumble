@@ -1,14 +1,11 @@
 {
-  "easy": [
-    "APPLE", "HOUSE", "BOOK", "DOG", "CAT", "CAR", "TREE", "BALL", "SUN", "WATER",
-    "ELEPHANT", "MOUNTAIN", "COMPUTER", "BICYCLE", "KITCHEN", "FLOWER", "RIVER", "FOREST", "AIRPLANE", "MUSIC"
-  ],
-  "medium": [
-    "BELLIGERENT", "CIRCUITOUS", "DELETERIOUS", "EFFERVESCENT", "FURTIVE", "GREGARIOUS", "HEDONISTIC", "INCANDESCENT", "JUBILANT", "KALEIDOSCOPIC",
-    "LANGUOROUS", "MELLIFLUOUS", "NEBULOUS", "OBFUSCATE", "PANACEA", "QUAGMIRE", "RECALCITRANT", "SURREPTITIOUS", "TENACIOUS", "VORACIOUS"
-  ],
-  "hard": [
-    "XENOPHOBIA", "QUINTESSENTIAL", "EPISTEMOLOGY", "ONOMATOPOEIA", "SCHADENFREUDE", "PNEUMONIA", "HYPOTHETICAL", "CACOPHONY", "EUPHEMISM", "PARADIGM",
-    "METICULOUS", "UBIQUITOUS", "SERENDIPITY", "EPHEMERAL", "INEFFABLE", "LUGUBRIOUS", "PERFIDIOUS", "QUIXOTIC", "SYCOPHANT", "TACITURN"
+  "words": [
+    "apple", "house", "book", "dog", "cat", "car", "tree", "ball", "sun", "water",
+    "elephant", "mountain", "computer", "bicycle", "kitchen", "flower", "river", "forest", "airplane", "music",
+    "belligerent", "circuitous", "deleterious", "effervescent", "furtive", "gregarious", "hedonistic", "incandescent", 
+    "jubilant", "kaleidoscopic", "languorous", "mellifluous", "nebulous", "obfuscate", "panacea", 
+    "quagmire", "recalcitrant", "surreptitious", "tenacious", "unassuming", "xenophobia", "quintessential", 
+    "epistemology", "onomatopoeia", "schadenfreude", "pneumonia", "hypothetical", "cacophony", "euphemism", "paradigm",
+    "meticulous", "ubiquitous", "resilient", "anecdote", "pernicious", "obnoxious", "laconic", "serendipity", "ephemeral", "abstemious"
   ]
 }

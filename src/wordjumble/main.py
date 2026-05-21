@@ -31,8 +31,8 @@ def main():
             k = readkey()
             if (k == key.SPACE or k == key.ENTER): # chooses to play
                 # do something when player chooses to play...
-                print(getState())
-                sys.exit(0)
+                wordjumble(getState())
+                break
 
             elif (k == 'q'): # chooses to quit
                 clearTerminal()
