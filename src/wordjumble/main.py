@@ -1,19 +1,14 @@
 from utils import * # importing functionss from the helpers file
 import os
-from sounds import *
+from sounds import openSound
+from state import getState
 
-def main(file):
+def main():
     """
         this is the main funtion of the game. it is the first function the player will interact with when they play the game.
 
-        input: a string name of the file from the assets directory that contains the words that will be used in the game.
-        outputs: currently does not return anything but calls the play() function from the utils module that is interactive
-                    with the user. 
-
-                    1. i plan to make it return outputs/progress for saving the state of the game soon.
-                    2. i want to save the state in a easy-accessable file, like a JSON file.
-                    3. i want the game to select words randomly from each level of difficulty.
-                    4. i want the game to also be able to be able to switch levels of difficulty after each level is complete.
+        input: a tuple of lists that contain the words that will be used in the game.
+        outputs: returns a tuple of lists of the unused words in the game that will be saved in state file. 
     """
    
     try:
@@ -35,14 +30,9 @@ def main(file):
 
             k = readkey()
             if (k == key.SPACE or k == key.ENTER): # chooses to play
-                # play sound for choosing to play.
-                
-                level_words = getWords(file)
-
-                for word in level_words:
-
-                    word = word.lower()
-                    play(word)
+                # do something when player chooses to play...
+                print(getState())
+                sys.exit(0)
 
             elif (k == 'q'): # chooses to quit
                 clearTerminal()
@@ -58,11 +48,9 @@ def main(file):
         clearTerminal()
         sys.exit("GAME INTERRUPTED BY USER")
 
-    except(FileNotFoundError):
-        clearTerminal()
-        sys.exit("ASSETS FOR RUNNING PROGRAM NOT FOUND")
 
 if __name__ == "__main__":
 
-    file = "../../assets/words/easy_words.txt"
-    main(file)
+    main()
+
+    
