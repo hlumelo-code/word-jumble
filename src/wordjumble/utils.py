@@ -8,11 +8,19 @@ from readchar import readkey, key
 from sounds import *
 from state import saveState
 
-def wordjumble(words): # this is the engine of the game.
+def wordjumble(words): 
+    """
+        ENGINE OF THE GAME - this function uses the list of words from the saved state of the game to continue off
+        by taking each word and passing it as an argument to the play() function. 
+
+            if play() returns True -> word puzzle was solved successfully and wordjumble() removes that word from set.
+            if play() returns False -> player decided to quit the round. wordjumble() calls saveState() with the available
+            set of words to save for next time player opens the game.
+    """
 
     for word in words:
 
-        solved = False
+        solved = False # default value
         solved = play(word)
 
         if solved == True: # if the current word has been solved...
@@ -21,6 +29,8 @@ def wordjumble(words): # this is the engine of the game.
         else:
             saveState(words)
             break
+
+
 
 def clearTerminal():
     """
@@ -34,6 +44,8 @@ def clearTerminal():
         os.system("cls")
     else:
         os.system("clear")
+
+
 
 def play(word): 
     """

@@ -1,13 +1,17 @@
 import json
 from pathlib import Path
 import time 
-import os
+from os import sys
 
 state_file = Path(__file__).parents[2].resolve() / "assets/state/state.json"
 words_file = Path(__file__).parents[2].resolve() / "assets/words/words.json"
 
 def saveState(words):
     """
+        SAVESTATE saves the current state of the game. 
+
+        input: list of currently unused words from the state.json file.
+        output: saves these words in the state.json file for continuing from it the next time player opens game.
 
     """
     with open(state_file, "r") as pre:
@@ -23,6 +27,8 @@ def saveState(words):
 
 def restoreState():
     """
+        RESTORESTATE - restores all the original words of the game back to the state.json file. this is for cases where the json file
+        has been deleted accidentally (or intentionally), if if the player has finished all words and wants to start game from scratch.
 
     """
     try:
@@ -57,7 +63,7 @@ def getState():
     """
         this function is for checking the current state of the game when the player starts the game. this function will determine if the player
         still has unplayed words to go through, and will then lead to them being provided... if not, then it will help to know when to reload all words 
-        when all lists are empty.
+        when list is empty.
     """
     try:
 

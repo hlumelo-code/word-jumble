@@ -1,14 +1,16 @@
-from utils import * # importing functionss from the helpers file
-import os
+from utils import *
 from sounds import openSound
 from state import getState
 
+
 def main():
     """
-        this is the main funtion of the game. it is the first function the player will interact with when they play the game.
-
-        input: a tuple of lists that contain the words that will be used in the game.
-        outputs: returns a tuple of lists of the unused words in the game that will be saved in state file. 
+        main function - greets the player and asks them to respond/choose if they want to play or quit the game.
+            if player presses ENTER or SPACE, the wordjumble() function is called with the list of words unused
+            by the player.
+            if they press Q, the game shuts down.
+            if they use CTRL_X or CTRL_C, the program terminates. 
+        
     """
    
     try:
@@ -18,7 +20,7 @@ def main():
         openSound()
         time.sleep(0.3)
 
-        # introduction / welcoming the player.
+        # welcoming the player.
         print("                                           \033[35m" + "WELCOME" + "\033[0m")
         print("In this game, you are given a JUMBLED word - you have to \033[34mUNJUMBLE\033[0m it to move to the next round, and eventually levels.\n"
               "To UNJUMBLE a word is to reorder the given characters to match the sequence of characters of the hidden word.\n"
@@ -26,11 +28,10 @@ def main():
         time.sleep(0.3)
         print("\nPress SPACE or ENTER to start, press 'Q' to quit the game.")
 
-        while True:
+        while True: # this while loop is for making sure to query the user until a valid input is used.
 
             k = readkey()
             if (k == key.SPACE or k == key.ENTER): # chooses to play
-                # do something when player chooses to play...
                 wordjumble(getState())
                 break
 
