@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "word-jumble"
+version = "0.1.0"
+description = "A word scrabble game built to be fun and pythonic."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "hlumelo-code", email = "hlumelowilliam@proton.me"}
+]
+keywords = ["game", "jumble", "word", "scrabble", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment :: Word Games",
+]
+dependencies = [
+    "art==6.5",
+    "nava==0.8",
+    "readchar==4.2.2",
+]
+
+[project.scripts]
+word-jumble = "wordjumble.main:main"
+
+[project.urls]
+Homepage = "https://github.com/hlumelo-code/word-jumble"
+Repository = "https://github.com/hlumelo-code/word-jumble"
+Issues = "https://github.com/hlumelo-code/word-jumble/issues"
