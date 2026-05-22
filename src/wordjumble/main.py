@@ -32,7 +32,8 @@ def main():
 
             k = readkey()
             if (k == key.SPACE or k == key.ENTER): # chooses to play
-                wordjumble(getState())
+                words = getState()
+                wordjumble(words)
                 break
 
             elif (k == 'q'): # chooses to quit
